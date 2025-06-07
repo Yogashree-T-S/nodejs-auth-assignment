@@ -17,7 +17,7 @@ const ThankYou = () => {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(`https://nodejs-auth-assignment-1.onrender.com/api/delete-account/${user.email}`);
+            await axios.delete(`https://nodejs-auth-assignment-3.onrender.com/api/delete-account/${user.email}`);
             alert('Your account has been deleted.');
             navigate('/');
         } catch (error) {
@@ -30,7 +30,7 @@ const ThankYou = () => {
         <div style={{ maxWidth: '400px', margin: '40px auto', textAlign: 'center', padding: '20px', border: '1px solid #ccc', borderRadius: '10px' }}>
             <h2>Welcome, {user.name}!</h2>
             <img
-                src={`https://nodejs-auth-assignment-1.onrender.com/${user.image}`}
+                src={`https://nodejs-auth-assignment-3.onrender.com/${user.image}`}
                 alt="User"
                 style={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '8px' }}
             />

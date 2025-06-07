@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 dotenv.config();
 
 const app = express();
-const allowedOrigins = ['https://nodejs-auth-assignment-2.onrender.com'];
+const allowedOrigins = ['https://nodejs-auth-assignment-4.onrender.com'];
 
 app.use(cors({
     origin: function (origin, callback) {

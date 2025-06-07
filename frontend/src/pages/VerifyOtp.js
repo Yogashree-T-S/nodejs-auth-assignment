@@ -10,7 +10,7 @@ const VerifyOtp = () => {
     const handleVerify = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://nodejs-auth-assignment-1.onrender.com/api/verify-otp', {
+            const res = await axios.post('https://nodejs-auth-assignment-3.onrender.com/api/verify-otp', {
                 email,
                 otp,
             });
