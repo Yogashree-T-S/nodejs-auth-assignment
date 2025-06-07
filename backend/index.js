@@ -9,13 +9,15 @@ const PORT = process.env.PORT || 5000;
 dotenv.config();
 
 const app = express();
-const allowedOrigins = ['https://nodejs-auth-assignment-2.onrender.com'];
+// const allowedOrigins = ['https://nodejs-auth-assignment-2.onrender.com'];
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

@@ -60,7 +60,18 @@ router.post('/register', upload.single('image'), async (req, res) => {
         });
 
         await newUser.save();
-        res.status(201).json({ message: 'User registered successfully' });
+        // res.status(201).json({ message: 'User registered successfully' });
+        res.status(201).json({
+            message: 'User registered successfully',
+            user: {
+                name: newUser.name,
+                email: newUser.email,
+                company: newUser.company,
+                age: newUser.age,
+                dob: newUser.dob,
+                image: newUser.image
+            }
+        });
 
     } catch (err) {
         console.error('Register Error:', err);
@@ -88,7 +99,12 @@ router.post('/login', async (req, res) => {
         user.otpExpiry = expiry;
         await user.save();
 
-        res.json({ message: 'OTP sent', otp });
+        res.json({
+            message: 'OTP sent',
+            email: user.email,
+            otp
+        });
+
     } catch (err) {
         console.error('Login Error:', err);
         res.status(500).json({ message: 'Server error during login' });
@@ -115,7 +131,18 @@ router.post('/verify-otp', async (req, res) => {
         user.otpExpiry = null;
         await user.save();
 
-        res.json({ message: 'OTP verified', user });
+        res.json({
+            message: 'OTP verified',
+            user: {
+                name: user.name,
+                email: user.email,
+                company: user.company,
+                age: user.age,
+                dob: user.dob,
+                image: user.image
+            }
+        });
+        // res.json({ message: 'OTP verified', user });
     } catch (err) {
         console.error('OTP Verification Error:', err);
         res.status(500).json({ message: 'Server error during OTP verification' });
