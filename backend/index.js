@@ -9,13 +9,18 @@ const PORT = process.env.PORT || 5000;
 dotenv.config();
 
 const app = express();
-// const allowedOrigins = ['https://nodejs-auth-assignment-2.onrender.com'];
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
-}));
+const allowedOrigins = ['https://nodejs-auth-assignment-2.onrender.com'];
 
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS not allowed for this origin'));
+        }
+    },
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
