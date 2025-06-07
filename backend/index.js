@@ -8,9 +8,9 @@ const path = require('path');
 dotenv.config();
 
 const app = express();
-
+const allowedOrigins = ['https://nodejs-auth-assignment-2.onrender.com','http://localhost:3000'];
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: allowedOrigins,
     credentials: true
 }));
 
